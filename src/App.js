@@ -1,17 +1,23 @@
 import React, { Component } from "react";
-import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
+import { Button, Form, Grid, Header, Segment, List } from "semantic-ui-react";
 
 class App extends Component {
-  state = { words: [] };
+  state = { words: ["murmur", "sycophant", "invariable"] };
 
-  addWord = word => {
-    console.log("New word coming in..." + word);
-    const oldWords = this.state.words;
-    const newWords = oldWords.push(word);
-    this.setState({ words: newWords });
+  addWord = e => {
+    console.log("New word coming in..." + e);
+    // const oldWords = this.state.words;
+    // oldWords.push(e);
+    // this.setState({ words: oldWords });
   };
 
   render() {
+    const wordList = this.state.words.map((word, index) => (
+      <List.Item key={index}>
+        <p>{word}</p>
+      </List.Item>
+    ));
+
     return (
       <div>
         <br />
@@ -24,10 +30,11 @@ class App extends Component {
             <Header as="h2" color="blue" textAlign="center">
               List of Words
             </Header>
+            <List size="large">{wordList}</List>
             <Form size="large">
               <Segment>
                 <Form.Input fluid placeholder="New Word" />
-                <Button color="blue" fluid size="large" onSubmit={this.addWord}>
+                <Button color="blue" fluid size="large" onClick={this.addWord}>
                   Submit New Word
                 </Button>
               </Segment>
