@@ -5,10 +5,12 @@ class App extends Component {
   state = { words: ["murmur", "sycophant", "invariable"] };
 
   addWord = e => {
-    console.log("New word coming in..." + e);
-    // const oldWords = this.state.words;
-    // oldWords.push(e);
-    // this.setState({ words: oldWords });
+    e.preventDefault();
+    console.log("New word coming in..." + e.target[0].value);
+
+    const oldWords = this.state.words;
+    oldWords.push(e.target[0].value);
+    this.setState({ words: oldWords });
   };
 
   render() {
@@ -31,10 +33,10 @@ class App extends Component {
               List of Words
             </Header>
             <List size="large">{wordList}</List>
-            <Form size="large">
+            <Form size="large" onSubmit={this.addWord}>
               <Segment>
                 <Form.Input fluid placeholder="New Word" />
-                <Button color="blue" fluid size="large" onClick={this.addWord}>
+                <Button color="blue" fluid size="large">
                   Submit New Word
                 </Button>
               </Segment>
