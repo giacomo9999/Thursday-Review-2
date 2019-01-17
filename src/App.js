@@ -7,7 +7,6 @@ class App extends Component {
   addWord = e => {
     e.preventDefault();
     console.log("New word coming in..." + e.target[0].value);
-
     const oldWords = this.state.words;
     oldWords.push(e.target[0].value);
     this.setState({ words: oldWords });
