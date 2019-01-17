@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 
 class App extends Component {
+  state = { words: [] };
+
+  addWord = word => {
+    console.log("New word coming in..." + word);
+    const oldWords = this.state.words;
+    const newWords = oldWords.push(word);
+    this.setState({ words: newWords });
+  };
+
   render() {
     return (
       <div>
@@ -12,13 +21,13 @@ class App extends Component {
           verticalAlign="middle"
         >
           <Grid.Column style={{ maxWidth: 350 }}>
-            <Header as="h2" color="teal" textAlign="center">
+            <Header as="h2" color="blue" textAlign="center">
               List of Words
             </Header>
             <Form size="large">
-              <Segment stacked>
+              <Segment>
                 <Form.Input fluid placeholder="New Word" />
-                <Button color="teal" fluid size="large">
+                <Button color="blue" fluid size="large" onSubmit={this.addWord}>
                   Submit New Word
                 </Button>
               </Segment>
