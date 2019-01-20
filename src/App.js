@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, Grid, Header, Segment, List } from "semantic-ui-react";
+import AddWord from './components/AddWord.component';
 
 class App extends Component {
   state = { words: ["murmur", "sycophant", "invariable"] };
@@ -32,14 +33,7 @@ class App extends Component {
               List of Words
             </Header>
             <List size="large">{wordList}</List>
-            <Form size="large" onSubmit={this.addWord}>
-              <Segment>
-                <Form.Input fluid placeholder="New Word" />
-                <Button color="blue" fluid size="large">
-                  Submit New Word
-                </Button>
-              </Segment>
-            </Form>
+            <AddWord onSubmit={this.addWord}/>
           </Grid.Column>
         </Grid>
       </div>
