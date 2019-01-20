@@ -33,7 +33,8 @@ class App extends Component {
               List of Words
             </Header>
             <List size="large">{wordList}</List>
-            <AddWord onSubmit={this.addWord}/>
+            <AddWord onSubmit={this.addWord} addWordId="Alpha"/>
+            <AddWord onSubmit={this.addWord} addWordId="Beta"/>
           </Grid.Column>
         </Grid>
       </div>
