@@ -1,12 +1,15 @@
-import React, { Component } from "react";
-import { Card, Form, Button, Segment, Header } from "semantic-ui-react";
+import React from "react";
+import { Form, Button, Segment, Header } from "semantic-ui-react";
 
 class AddWord extends React.Component {
-  submitWithId = e => {};
+  submitWithId = e => {
+    console.log("word leaving AddWord " + this.props.addWordId);
+    this.props.onSubmit(e, this.props.addWordId);
+  };
 
   render() {
     return (
-      <Form size="large" onSubmit={this.props.onSubmit}>
+      <Form size="large" onSubmit={this.submitWithId}>
         <Segment>
           <Header as="h4">{`Submit Form ${this.props.addWordId}`}</Header>
           <Form.Input fluid placeholder="New Word" />

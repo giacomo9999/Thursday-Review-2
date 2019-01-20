@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Button, Form, Grid, Header, Segment, List } from "semantic-ui-react";
-import AddWord from './components/AddWord.component';
+import { Grid, Header, List } from "semantic-ui-react";
+import AddWord from "./components/AddWord.component";
 
 class App extends Component {
   state = { words: ["murmur", "sycophant", "invariable"] };
 
-  addWord = e => {
+  addWord = (e, source) => {
     e.preventDefault();
-    console.log("New word coming in..." + e.target[0].value);
+    console.log("New word coming in from AddWord " + source + "..." + e.target[0].value);
     const oldWords = this.state.words;
     oldWords.push(e.target[0].value);
     this.setState({ words: oldWords });
@@ -33,8 +33,8 @@ class App extends Component {
               List of Words
             </Header>
             <List size="large">{wordList}</List>
-            <AddWord onSubmit={this.addWord} addWordId="Alpha"/>
-            <AddWord onSubmit={this.addWord} addWordId="Beta"/>
+            <AddWord onSubmit={this.addWord} addWordId="Alpha" />
+            <AddWord onSubmit={this.addWord} addWordId="Beta" />
           </Grid.Column>
         </Grid>
       </div>
